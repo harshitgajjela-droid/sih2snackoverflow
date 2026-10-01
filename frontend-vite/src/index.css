@@ -1,0 +1,217 @@
+/* ── Font imports ─────────────────────────────────────────────────────────── */
+@import '@fontsource/ibm-plex-sans/400.css';
+@import '@fontsource/ibm-plex-sans/600.css';
+@import '@fontsource/ibm-plex-mono/400.css';
+@import '@fontsource/ibm-plex-mono/600.css';
+
+/* ── Tailwind directives ──────────────────────────────────────────────────── */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Design tokens ────────────────────────────────────────────────────────── */
+:root {
+  /* Page & surface */
+  --color-page:        #F4F6F9;
+  --color-panel:       #FFFFFF;
+  --color-border:      #DCE1E8;
+  --color-border-mid:  #C4CBD6;
+
+  /* Text */
+  --color-text-primary:   #0E1A2B;
+  --color-text-secondary: #4A5668;
+  --color-text-tertiary:  #6B7686;
+
+  /* Brand */
+  --color-navy:       #14315C;
+  --color-navy-mid:   #6F8FBF;
+  --color-navy-light: #E8EEF7;
+
+  /* Status — used ONLY for status communication */
+  --color-approved: #15703F;
+  --color-pending:  #9A5B00;
+  --color-rejected: #B3261E;
+
+  /* Focus */
+  --color-focus: #1F5BD8;
+
+  /* Typography scale */
+  --text-meta:  12.5px;
+  --text-body:  14px;
+  --text-title: 15px;
+  --text-page:  24px;
+  --text-kpi:   32px;
+
+  /* Shape */
+  --radius: 6px;
+
+  /* Transition */
+  --progress-duration: 400ms;
+}
+
+/* ── Base reset ───────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: var(--text-body); }
+
+body {
+  font-family: 'IBM Plex Sans', system-ui, sans-serif;
+  font-size: var(--text-body);
+  font-weight: 400;
+  color: var(--color-text-primary);
+  background: var(--color-page);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Tabular numbers everywhere */
+body, input, select, button, table {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Mono font for material codes */
+.font-mono {
+  font-family: 'IBM Plex Mono', 'Courier New', monospace !important;
+}
+
+/* ── Focus visible ────────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+:focus:not(:focus-visible) { outline: none; }
+
+/* ── Scrollbar ────────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--color-border-mid); border-radius: 3px; }
+
+/* ── Progress bar animation (respects reduced-motion) ────────────────────── */
+.progress-bar {
+  transition: width var(--progress-duration) ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  .progress-bar { transition: none; }
+}
+
+/* ── Utility classes using tokens ─────────────────────────────────────────── */
+.panel {
+  background: var(--color-panel);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.divider { border-top: 1px solid var(--color-border); }
+.divider-v { border-left: 1px solid var(--color-border); }
+
+.text-primary   { color: var(--color-text-primary); }
+.text-secondary { color: var(--color-text-secondary); }
+.text-tertiary  { color: var(--color-text-tertiary); }
+
+.text-meta  { font-size: var(--text-meta); }
+.text-body  { font-size: var(--text-body); }
+.text-title { font-size: var(--text-title); font-weight: 600; }
+.text-page  { font-size: var(--text-page); font-weight: 600; }
+.text-kpi   { font-size: var(--text-kpi);  font-weight: 600; }
+
+/* Status dots */
+.dot {
+  display: inline-block;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.dot-approved { background: var(--color-approved); }
+.dot-pending  { background: var(--color-pending); }
+.dot-rejected { background: var(--color-rejected); }
+.dot-neutral  { background: var(--color-border-mid); }
+
+/* CPSE tag — small outlined gray tag, no color per company */
+.cpse-tag {
+  display: inline-block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border-mid);
+  border-radius: var(--radius);
+  padding: 1px 6px;
+  white-space: nowrap;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: inherit;
+  font-size: var(--text-body);
+  font-weight: 600;
+  border-radius: var(--radius);
+  padding: 6px 14px;
+  cursor: pointer;
+  transition: background 120ms, border-color 120ms, color 120ms;
+  white-space: nowrap;
+}
+.btn:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+.btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.btn-approve {
+  background: var(--color-approved);
+  color: #fff;
+  border: 1px solid var(--color-approved);
+}
+.btn-approve:hover:not(:disabled) { background: #0f5430; border-color: #0f5430; }
+
+.btn-reject {
+  background: transparent;
+  color: var(--color-rejected);
+  border: 1px solid var(--color-rejected);
+}
+.btn-reject:hover:not(:disabled) { background: #fdf2f2; }
+
+.btn-outline {
+  background: transparent;
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border-mid);
+}
+.btn-outline:hover:not(:disabled) { background: var(--color-page); }
+
+/* Form inputs */
+.field {
+  font-family: inherit;
+  font-size: var(--text-body);
+  color: var(--color-text-primary);
+  background: var(--color-panel);
+  border: 1px solid var(--color-border-mid);
+  border-radius: var(--radius);
+  padding: 6px 10px;
+  width: 100%;
+}
+.field:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 0;
+  border-color: var(--color-focus);
+}
+.field::placeholder { color: var(--color-text-tertiary); }
+
+/* Skeleton loading bars */
+.skeleton {
+  background: var(--color-border);
+  border-radius: var(--radius);
+  animation: none;
+}
+
+/* Sticky table head */
+.table-sticky-head thead th {
+  position: sticky;
+  top: 0;
+  background: var(--color-page);
+  z-index: 1;
+}
+
+/* Show remove button only on row hover */
+tr:hover .remove-btn { opacity: 1 !important; }
