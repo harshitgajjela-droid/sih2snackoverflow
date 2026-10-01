@@ -338,32 +338,6 @@ Returns approval/rejection history with timestamps
 
 5. **Government-Ready UX**: IBM Plex typography, WCAG AA, keyboard-first, serious tool aesthetic
 
-## 👥 Team
-
-- **AI/ML Specialist**: NLP, Transformers, Scikit-learn (3+ years)
-- **Full-Stack Developer**: React, FastAPI, PostgreSQL (5+ years)
-- **SAP Integration Expert**: PyRFC, SAP MM module (4+ years)
-- **Domain Advisor**: CPSE Procurement Officer (15+ years)
-- **Government UX Designer**: WCAG accessibility, IBM Design Language
-
-## 📄 License
-
-MIT License - see LICENSE file for details
-
-## 🙏 Acknowledgments
-
-- **Ministry of Petroleum & Natural Gas**: Problem statement sponsor
-- **Chennai Petroleum Corporation Limited (CPCL)**: Domain guidance
-- **Smart India Hackathon 2025**: Platform and support
-- **CPSE Procurement Officers**: Domain validation and feedback
-
-## 📞 Contact
-
-- **Team**: Visioncraft (or your team name)
-- **GitHub**: https://github.com/harshitgajjela-droid/sih2snackoverflow
-- **Email**: (your team email)
-
----
 
 **"One Nation – One Material Code"** - Enabling collaborative procurement at national scale.
 
